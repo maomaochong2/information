@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org" >
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>学员管理系统</title>
+	<link th:href="@{/css/bootstrap.min.css}"  rel="stylesheet">
+	<link th:href="@{/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css}"  rel="stylesheet">
+	<link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+
+<header>
+	<div class="header-top">
+		<div class="container">
+			<h2 class="site-title"><a href="">SMS</a></h2>
+			<p class="site-sign">学生信息管理系统！</p>
+		</div>
+	</div>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="collapsed navbar-toggle" data-toggle="collapse"
+				        data-target=".navbar-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a th:href="@{index}"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
+					<li><a th:href="@{list_classes}" ><span class="glyphicon glyphicon-list"></span> 班级管理</a></li>
+					<li><a th:href="@{list_student}"><span class="glyphicon glyphicon-user"></span> 学生管理</a></li>
+					<li><a th:href="@{list_classes}"><span class="glyphicon glyphicon-grain"></span> 成绩管理</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img th:src="@{/img/avatar1.jpeg}"  height="20" > <span th:text="${session.username}">管理员</span>
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="profile.html">个人资料</a></li>
+							<li><a href="password.html">修改密码</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="login.html">退出</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--/.collapse.navbar-collapse-->
+		</div><!--/.container-->
+	</nav>
+</header>
+
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+
+					<h4>
+						<strong>学生管理</strong>
+						<a class="btn btn-info btn-xs" href="add_student.html">
+							<span class="glyphicon glyphicon-plus"></span> 添加
+						</a>
+					</h4>
+					<hr/>
+
+					<form class="form-inline m-t-15 m-b-10">
+						<div class="form-group form-group-sm">
+							<label>学号：</label>
+							<input type="text" class="form-control" size="8">
+						</div>
+						<div class="form-group form-group-sm">
+							<label>姓名：</label>
+							<input type="text" class="form-control" size="5">
+						</div>
+						<div class="form-group form-group-sm">
+							<label>性别：</label>
+							<select class="form-control">
+								<option value="-1">-请选择-</option>
+								<option value="0">女</option>
+								<option value="1">男</option>
+							</select>
+						</div>
+						<div class="form-group form-group-sm">
+							<label>出生日期：</label>
+							<input type="text" class="form-control datepicker" size="10">
+							<span class="text-muted">-</span>
+							<input type="text" class="form-control datepicker" size="10">
+						</div>
+						<div class="form-group form-group-sm">
+							<label>所属班级：</label>
+							<select class="form-control">
+								<option value="-1">-请选择-</option>
+								<option value="1">19计本</option>
+							</select>
+						</div>
+						<div class="form-group form-group-sm">
+							<button type="submit" class="btn btn-primary btn-sm">
+								<span class="glyphicon glyphicon-search"></span> 搜索
+							</button>
+						</div>
+					</form>
+
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover">
+							<thead>
+							<tr>
+								<th><input type="checkbox" class="checkAll"></th>
+								<th>编号</th>
+								<th>学号</th>
+								<th>姓名</th>
+								<th>性别</th>
+								<th>出生日期</th>
+								<th>班级名称</th>
+								<th>Email</th>
+								<th>学生备注</th>
+								<th></th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td><input type="checkbox" class="checkItem"></td>
+								<td>1</td>
+								<td>080606110</td>
+								<td>唐僧</td>
+								<td>男</td>
+								<td>1995-06-01</td>
+								<td>19计本</td>
+								<td>123@qq.com</td>
+								<td>Good</td>
+								<td>
+									<button class="btn btn-default btn-xs" title="修改">
+										<span class="glyphicon glyphicon-pencil"></span> 修改
+									</button>
+									<button class="btn btn-danger btn-xs" title="删除">
+										<span class="glyphicon glyphicon-trash"></span> 删除
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="checkItem"></td>
+								<td>2</td>
+								<td>080606111</td>
+								<td>悟空</td>
+								<td>男</td>
+								<td>1995-06-01</td>
+								<td>19计本</td>
+								<td>123@qq.com</td>
+								<td>Good</td>
+								<td>
+									<button class="btn btn-default btn-xs" title="修改">
+										<span class="glyphicon glyphicon-pencil"></span> 修改
+									</button>
+									<button class="btn btn-danger btn-xs" title="删除">
+										<span class="glyphicon glyphicon-trash"></span> 删除
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="checkItem"></td>
+								<td>3</td>
+								<td>080606112</td>
+								<td>八戒</td>
+								<td>男</td>
+								<td>1995-06-01</td>
+								<td>19计本</td>
+								<td>123@qq.com</td>
+								<td>Good</td>
+								<td>
+									<button class="btn btn-default btn-xs" title="修改">
+										<span class="glyphicon glyphicon-pencil"></span> 修改
+									</button>
+									<button class="btn btn-danger btn-xs" title="删除">
+										<span class="glyphicon glyphicon-trash"></span> 删除
+									</button>
+								</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" class="checkItem"></td>
+								<td>4</td>
+								<td>080606113</td>
+								<td>沙僧</td>
+								<td>男</td>
+								<td>1995-06-01</td>
+								<td>19计本</td>
+								<td>123@qq.com</td>
+								<td>Good</td>
+								<td>
+									<button class="btn btn-default btn-xs" title="修改">
+										<span class="glyphicon glyphicon-pencil"></span> 修改
+									</button>
+									<button class="btn btn-danger btn-xs" title="删除">
+										<span class="glyphicon glyphicon-trash"></span> 删除
+									</button>
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="text-center">
+						<ul class="pagination">
+							<li><a href="#">&laquo;</a></li>
+							<li class="active"><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">&raquo;</a></li>
+						</ul>
+					</div>
+
+				</div><!--/.content-->
+			</div><!--/.col-md-12-->
+		</div><!--/.row-->
+	</div><!--/.container-->
+</article>
+
+<footer>
+	<p class="copyright">
+		&copy;2019 <a href="#">SMS</a> 学生信息管理系统
+	</p>
+</footer>
+
+
+
+<script th:src="@{//plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js}" ></script>
+<script th:src="@{/plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js}"></script>
+<script th:src="@{/js/jquery-1.12.4.min.js}" ></script>
+<script th:src="@{/js/bootstrap.min.js}" ></script>
+<script th:src="@{/plugins/layer/layer.js}"></script>
+<script th:src="@{/js/base.js}"></script>
+<script>
+	// 日期控件
+	$(".datepicker").datepicker({
+		format: "yyyy-mm-dd",
+		language: "zh-CN",
+		todayBtn: "linked",
+		todayHighlight: true,
+		autoclose: true
+	});
+
+	$(".btn-danger").click(function () {
+		var msg = "删除学生会连同其成绩一起删除，并且删除后不可恢复，您确定要删除该学生吗？";
+		layer.confirm(msg, {"icon": 3}, function () {
+			layer.msg("已删除！");
+		});
+		return false;
+	});
+</script>
+
+</body>
+</html>
