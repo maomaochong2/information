@@ -66,9 +66,10 @@ public class ClassesController {
         classesService.delete(id);
         return "redirect:list_classes";
     }
-    @GetMapping("/findById/{id}")
+    @GetMapping("/findByCname/{cname}")
     @ResponseBody
-    public Object findById(@PathVariable String id){
-       return classesService.findById(Integer.valueOf(id));
+    public Object findByCname(@PathVariable String cname){
+
+        return classesService.findByCname(String.valueOf(cname)); //.findById(Integer.valueOf(id));
     }
 }

@@ -13,4 +13,5 @@ public interface ClassesMapper {
     int update(ClassInfo classInfo);
     List<ClassInfo> list();
     ClassInfo findById(Integer id);
+    ClassInfo findByCname(String cname);
 }

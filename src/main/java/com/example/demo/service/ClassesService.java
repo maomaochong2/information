@@ -27,9 +27,13 @@ public class ClassesService {
 
         return classesMapper.list();
     }
-    public ClassInfo findById(Integer id){
+        public ClassInfo findById(Integer id){
 
         return classesMapper.findById(id);
+    }
+    public ClassInfo findByCname(String cname){
+
+        return classesMapper.findByCname(cname);
     }
 }
 
