@@ -23,9 +23,8 @@
         <select id="findById" resultMap="classesMap">
     select * from classes where  id=#{id}
 </select>
-
+<!--    select * from classes where  cname LIKE '%${cname}%'-->
 <select id="findByCname" resultMap="classesMap">
-    select * from classes where  cname=#{cname}
---      select * from classes where  cname LIKE '%${cname}%'
+     select * from classes where  cname=#{cname}
 </select>
 </mapper>
