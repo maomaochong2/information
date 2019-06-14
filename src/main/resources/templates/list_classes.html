@@ -166,8 +166,8 @@
 					"<td >"+data['cname']+"</td>\n" +
 					"<td >"+data['cdesc']+"</td>\n" +
 					"<td>\n" +
-					"<a href=\"/update_classes\">修改</a>&nbsp;&nbsp;\n" +
-					"<a href=\"/delete\">删除</a>\n" +
+					"<a href=\"/update_classes?id="+data['id']+"\">修改</a>&nbsp;&nbsp;\n" +
+					"<a href=\"/delete?id="+data['id']+"\">删除</a>\n" +
 					"</td>\n" +
 					"</tr>\n";
 				$("#list_result").html(html);
