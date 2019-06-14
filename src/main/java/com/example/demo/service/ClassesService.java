@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.entity.ClassInfo;
 import com.example.demo.mapper.ClassesMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,9 +32,10 @@ public class ClassesService {
 
         return classesMapper.findById(id);
     }
-    public ClassInfo findByCname(String cname){
-
-        return classesMapper.findByCname(cname);
+    public List<ClassInfo> findByCname(String cname) {
+        System.out.println(cname);
+       // return classesMapper.findByCname(cname);
+        return classesMapper.list();
     }
 }
 

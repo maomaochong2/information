@@ -28,6 +28,12 @@ public class LoginController {
 
         return "login";
     }
+    @RequestMapping("/index")
+    public String index1(){
+//        List<ClassInfo> list=classesService.list();
+//        model.addAttribute("list",list);
+        return "index";
+    }
 
     /**
      * 登录

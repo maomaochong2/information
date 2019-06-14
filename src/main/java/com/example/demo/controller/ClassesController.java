@@ -18,6 +18,7 @@ public class ClassesController {
     @Autowired
     private ClassesService classesService;
 
+
     /**
      * 班级列表
      * @param model
@@ -70,6 +71,6 @@ public class ClassesController {
     @ResponseBody
     public Object findByCname(@PathVariable String cname){
 
-        return classesService.findByCname(String.valueOf(cname)); //.findById(Integer.valueOf(id));
+        return classesService.findByCname(String.valueOf(cname));//.findByCname(String.valueOf(cname)); //.findById(Integer.valueOf(id));
     }
 }

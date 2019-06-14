@@ -14,5 +14,6 @@ public interface ClassesMapper {
     int update(ClassInfo classInfo);
     List<ClassInfo> list();
     ClassInfo findById(Integer id);
-    ClassInfo findByCname(@Param("cname") String cname);
+//    ClassInfo list1(@Param("cname") String cname);
+    List<ClassInfo> findByCname(@Param("cname") String cname);
 }
