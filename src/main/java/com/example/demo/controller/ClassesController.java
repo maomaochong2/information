@@ -36,8 +36,8 @@ public class ClassesController {
      * @param classInfo
      * @return
      */
-
-    @RequestMapping("/add")
+    @PostMapping("/add")
+    @ResponseBody
     public String add(ClassInfo classInfo){
         classesService.add(classInfo);
         return "redirect:list_classes";
@@ -49,6 +49,7 @@ public class ClassesController {
      */
     @RequestMapping("/add_classes")
     public String add_classes(){
+
         return "add_classes";
     }
     @RequestMapping("/update_classes")

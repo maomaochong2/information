@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.ClassInfo;
 import com.example.demo.entity.User;
 import com.example.demo.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,5 +16,15 @@ public class UserLoginService {
 
         user=this.userMapper.userLogin(user.getUsername(),user.getPassword());
         return user;
+    }
+    public int updatepwd(User user){
+
+        System.out.println(user);
+        return userMapper.updatepwd(user);
+    }
+    public User findById(Integer id){
+
+
+        return userMapper.findById(id);
     }
 }

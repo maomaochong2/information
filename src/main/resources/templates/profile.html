@@ -1,59 +1,16 @@
 <!DOCTYPE html>
-<html lang="zh_CN">
+<html lang="zh_CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>学员管理系统</title>
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<link href="assets/css/style.css" rel="stylesheet">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
 
-<header>
-	<div class="header-top">
-		<div class="container">
-			<h2 class="site-title"><a href="">SMS</a></h2>
-			<p class="site-sign">学生信息管理系统！</p>
-		</div>
-	</div>
-	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="collapsed navbar-toggle" data-toggle="collapse"
-				        data-target=".navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="index.html"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-					<li><a href="list_classes.html"><span class="glyphicon glyphicon-list"></span> 班级管理</a></li>
-					<li><a href="list_student.html"><span class="glyphicon glyphicon-user"></span> 学生管理</a></li>
-					<li><a href=""><span class="glyphicon glyphicon-grain"></span> 成绩管理</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav navbar-right">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="assets/img/avatar1.jpeg" height="20"> 管理员
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li><a href="profile.html">个人资料</a></li>
-							<li><a href="password.html">修改密码</a></li>
-							<li role="separator" class="divider"></li>
-							<li><a href="login.html">退出</a></li>
-						</ul>
-					</li>
-				</ul>
-			</div><!--/.collapse.navbar-collapse-->
-		</div><!--/.container-->
-	</nav>
-</header>
+<header th:include="include/header :: header"></header>
 
 <article>
 	<div class="container">
@@ -63,20 +20,20 @@
 
 					<ul class="nav nav-tabs m-b-25">
 						<li class="active"><a href="#">个人资料</a></li>
-						<li><a href="password.html">修改密码</a></li>
+						<li><a href="updatepassword">修改密码</a></li>
 					</ul>
 
 					<div class="row">
 
 						<div class="col-md-3 col-md-offset-1">
-							<img class="img-responsive img-thumbnail" src="assets/img/avatar1.jpeg">
+							<img class="img-responsive img-thumbnail" src="img/avatar1.jpeg">
 						</div>
 
 						<form class="col-md-8 form-horizontal" action="#">
 							<div class="form-group">
 								<label class="control-label col-md-2">用户名：</label>
 								<div class="col-md-4">
-									<p class="help-block">admin</p>
+									<p class="help-block" th:text="${session.username}"></p>
 								</div>
 							</div>
 
@@ -122,10 +79,10 @@
 	</p>
 </footer>
 
-<script src="assets/js/jquery-1.12.4.min.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/plugins/layer/layer.js"></script>
-<script src="assets/js/base.js"></script>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="plugins/layer/layer.js"></script>
+<script src="js/base.js"></script>
 
 </body>
 </html>

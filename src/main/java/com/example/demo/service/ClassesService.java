@@ -33,9 +33,9 @@ public class ClassesService {
         return classesMapper.findById(id);
     }
     public List<ClassInfo> findByCname(String cname) {
-        System.out.println(cname);
+//        System.out.println(cname);
        // return classesMapper.findByCname(cname);
-        return classesMapper.list();
+        return classesMapper.findByCname(cname);
     }
 }
 

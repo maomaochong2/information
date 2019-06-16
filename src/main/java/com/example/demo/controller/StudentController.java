@@ -22,4 +22,10 @@ public class StudentController {
 //        model.addAttribute("list",list);
         return "list_student";
     }
+    //添加页面
+    @RequestMapping("/add_student")
+    public String add_classes(){
+
+        return "add_student";
+    }
 }

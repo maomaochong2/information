@@ -4,7 +4,8 @@
 
     <resultMap id="BaseResultMap" type="com.example.demo.entity.User" >
         <id column="id" property="id" jdbcType="INTEGER" />
-        <result column="username" property="username" jdbcType="VARCHAR" />
+        <id column="username" property="id" jdbcType="VARCHAR" />
+        <!--<result column="username" property="username" jdbcType="VARCHAR" />-->
         <result column="password" property="password" jdbcType="VARCHAR" />
     </resultMap>
 
@@ -14,4 +15,7 @@
         SELECT *
         FROM user WHERE username = #{username} AND password = #{password}
     </select>
+    <update id="updatepwd">
+    update user set password=#{password} where username=#{username}
+</update>
 </mapper>
