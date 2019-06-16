@@ -9,8 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/")
@@ -40,10 +45,17 @@ public class ClassesController {
      */
     @PostMapping("/add")
     @ResponseBody
-    public ModelAndView add(ClassInfo classInfo){
-        classesService.add(classInfo);
-        return new ModelAndView("redirect:list_classes");
-//        return "redirect:list_classes";
+    public ModelAndView add(ClassInfo classInfo, Model model, HttpServletRequest request, HttpServletResponse response) {
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("cname", classInfo.getCname());
+        List<ClassInfo> classInfoList = classesService.list();
+        if (classInfoList.size() > 0) {
+            model.addAttribute("errormsg", "班级已经存在");
+            return new ModelAndView("redirect:add_classes");
+        } else {
+            classesService.add(classInfo);
+            return new ModelAndView("redirect:list_classes");
+        }
     }
     /**
      * 添加页面
