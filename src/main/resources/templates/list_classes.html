@@ -16,12 +16,12 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="content">
-
 					<h4>
 						<strong>班级管理</strong>
 						<a class="btn btn-info btn-xs" th:href="@{add_classes}">
 							<span class="glyphicon glyphicon-plus"></span> 添加
 						</a>
+
 					</h4>
 					<hr/>
 
@@ -31,9 +31,9 @@
 							<input name="cname" id="cname" type="text" class="form-control">
 						</div>
 						<div class="form-group form-group-sm">
-							<input type="button" onclick="findByCname()" class="btn btn-primary btn-sm"
-							value="搜索">
-						</div>
+						<input type="button" onclick="findByCname()" class="btn btn-primary btn-sm"
+							   value="搜索">
+					</div>
 					</form>
 
 					<div class="table-responsive">
@@ -109,10 +109,6 @@
 
 				for (var i = 0; i < data.length; i++) {
 					var d = data[i];
-					//d.cname
-					//d['cname']
-					//data[i].cname
-					//data[i]['cname']
 					html += "<tr >" +
 							"<td><input type=\"checkbox\" class=\"checkItem\"></td>\n" +
 							"<td >"+data[i]['id']+"</td>\n" +

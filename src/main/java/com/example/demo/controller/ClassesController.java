@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,7 @@ public class ClassesController {
      * @return
      */
     @RequestMapping("/list_classes")
+//    @ResponseBody
     public String list(Model model){
         List<ClassInfo> list=classesService.list();
         model.addAttribute("list",list);
@@ -38,9 +40,10 @@ public class ClassesController {
      */
     @PostMapping("/add")
     @ResponseBody
-    public String add(ClassInfo classInfo){
+    public ModelAndView add(ClassInfo classInfo){
         classesService.add(classInfo);
-        return "redirect:list_classes";
+        return new ModelAndView("redirect:list_classes");
+//        return "redirect:list_classes";
     }
     /**
      * 添加页面

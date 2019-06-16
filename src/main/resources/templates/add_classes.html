@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
+<html lang="zh_CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,14 +23,13 @@
 					</h4>
 					<hr/>
 
-					<!--<form class="form-horizontal" th:action="@{/add}" method="post">-->
+					<form class="form-horizontal"  >
 						<div class="form-group">
 							<label class="control-label col-md-2">班级名称：</label>
 							<div class="col-md-4">
 								<input id="cname" name="cname" type="text" class="form-control" required>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<label class="control-label col-md-2">班级描述：</label>
 							<div class="col-md-4">
@@ -40,11 +39,11 @@
 
 						<div class="form-group">
 							<div class="col-md-4 col-md-offset-2">
-								<input id="buttonid" type="button" class="btn btn-primary" onclick="sumbit()">保存</input>
+								<button id="buttonid"  class="btn btn-primary" onclick="sumbit()">保存</button>
 								<a th:href="@{add_classes}" class="btn btn-default">取消</a>
 							</div>
 						</div>
-					<!--</form>-->
+					</form>
 
 				</div><!--/.content-->
 			</div><!--/.col-md-12-->
@@ -62,23 +61,29 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="plugins/layer/layer.js"></script>
 <script src="js/base.js"></script>
-<script src="js/jquery-3.4.1.min.js"></script>
+<!--<script src="js/jquery-3.4.1.min.js"></script>-->
 <script>
 	function sumbit() {
 		var cname=document.getElementById("cname");
 		var cdesc=document.getElementById("cdesc");
-
 		$.ajax({
 			url:'/add',
 			type:"post",
 			dataType:JSON,
-			data:{id:id.value,cname:cname.value,cdesc:cdesc.value},
+			data:{cname:cname.value,cdesc:cdesc.value},
 			success:function(data){
-				alert("添加:"+data);
-				cname.value="";
-				cdesc.value="";
+				if(JSON.state==1){
+					window.alert("添加成功");
+					// cname.value="";
+					// cdesc.value="";
+
+				}
+			},
+			error:function () {
+				window.alert("添加失败");
 			}
-		});
+		});			$("#list_result").html(html);
+
 	};
 </script>
 </body>

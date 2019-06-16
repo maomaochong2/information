@@ -73,7 +73,7 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = {"/login"})
-    public ModelAndView login(User user, HttpServletRequest request, HttpSession session) {
+    public ModelAndView login(User user, HttpServletRequest request, HttpSession session,Model model) {
         ModelAndView mav = new ModelAndView();
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -88,9 +88,10 @@ public class LoginController {
             mav.setViewName("index");
             return mav;
         } else {
-            session.setAttribute("errormsg", "账号或密码错误!请重新输入");
+            model.addAttribute("errormsg","账号或密码错误！");
+            mav.setViewName("login");
         }
-        mav.setViewName("login");
+       // mav.setViewName("login");
         return mav;
     }
 }
