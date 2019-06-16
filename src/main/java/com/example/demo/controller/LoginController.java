@@ -94,4 +94,11 @@ public class LoginController {
        // mav.setViewName("login");
         return mav;
     }
+    @RequestMapping(value = {"/loginout"})
+    public String loginout(Model model, HttpServletRequest request){
+        if(request.getSession().getAttribute("user")!=null){
+            request.getSession().removeAttribute("user");
+        }
+        return "login";
+    }
 }
