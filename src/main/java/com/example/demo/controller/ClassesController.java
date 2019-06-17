@@ -44,18 +44,13 @@ public class ClassesController {
      * @return
      */
     @PostMapping("/add")
-    @ResponseBody
+
     public ModelAndView add(ClassInfo classInfo, Model model, HttpServletRequest request, HttpServletResponse response) {
-        Map<String, String> map = new HashMap<String, String>();
+        Map<String, String> map = new HashMap<>();
         map.put("cname", classInfo.getCname());
         List<ClassInfo> classInfoList = classesService.list();
-        if (classInfoList.size() > 0) {
-            model.addAttribute("errormsg", "班级已经存在");
-            return new ModelAndView("redirect:add_classes");
-        } else {
             classesService.add(classInfo);
             return new ModelAndView("redirect:list_classes");
-        }
     }
     /**
      * 添加页面

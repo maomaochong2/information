@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh_CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,7 +23,7 @@
 					</h4>
 					<hr/>
 
-					<form class="form-horizontal"  >
+					<form class="form-horizontal" th:action="@{add}" method="post">
 						<div class="form-group">
 							<label class="control-label col-md-2">班级名称：</label>
 							<div class="col-md-4">
@@ -39,7 +39,7 @@
 						<div style="color: red" th:text="${errormsg}"></div>
 						<div class="form-group">
 							<div class="col-md-4 col-md-offset-2">
-								<button id="buttonid"  class="btn btn-primary" onclick="sumbit()">保存</button>
+								<button id="buttonid"  class="btn btn-primary" type="submit">保存</button>
 								<a th:href="@{add_classes}" class="btn btn-default">取消</a>
 							</div>
 						</div>
@@ -62,26 +62,26 @@
 <script src="plugins/layer/layer.js"></script>
 <script src="js/base.js"></script>
 <!--<script src="js/jquery-3.4.1.min.js"></script>-->
-<script>
-	function sumbit() {
-		var cname=document.getElementById("cname");
-		var cdesc=document.getElementById("cdesc");
-		$.ajax({
-			url:'/add',
-			type:"post",
-			dataType:JSON,
-			data:{cname:cname.value,cdesc:cdesc.value},
-			success:function(data){
-					window.alert("添加成功");
-					cname.value="";
-					cdesc.value="";
-			},
-			error:function () {
-				window.alert("添加失败");
-			}
-		});
+<!--<script>-->
+	<!--function sumbit() {-->
+		<!--var cname=document.getElementById("cname");-->
+		<!--var cdesc=document.getElementById("cdesc");-->
+		<!--$.ajax({-->
+			<!--url:'/add',-->
+			<!--type:"post",-->
+			<!--dataType:JSON,-->
+			<!--data:{cname:cname.value,cdesc:cdesc.value},-->
+			<!--success:function(data){-->
+					<!--window.alert("添加成功");-->
+					<!--cname.value="";-->
+					<!--cdesc.value="";-->
+			<!--},-->
+			<!--error:function () {-->
+				<!--window.alert("添加失败");-->
+			<!--}-->
+		<!--});-->
 
-	};
-</script>
+	<!--};-->
+<!--</script>-->
 </body>
 </html>

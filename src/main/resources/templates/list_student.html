@@ -81,73 +81,15 @@
 							</tr>
 							</thead>
 							<tbody>
-							<tr>
+							<tr th:each="stu:${list}">
 								<td><input type="checkbox" class="checkItem"></td>
-								<td>1</td>
-								<td>080606110</td>
-								<td>唐僧</td>
-								<td>男</td>
-								<td>1995-06-01</td>
-								<td>19计本</td>
-								<td>123@qq.com</td>
-								<td>Good</td>
-								<td>
-									<button class="btn btn-default btn-xs" title="修改">
-										<span class="glyphicon glyphicon-pencil"></span> 修改
-									</button>
-									<button class="btn btn-danger btn-xs" title="删除">
-										<span class="glyphicon glyphicon-trash"></span> 删除
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" class="checkItem"></td>
-								<td>2</td>
-								<td>080606111</td>
-								<td>悟空</td>
-								<td>男</td>
-								<td>1995-06-01</td>
-								<td>19计本</td>
-								<td>123@qq.com</td>
-								<td>Good</td>
-								<td>
-									<button class="btn btn-default btn-xs" title="修改">
-										<span class="glyphicon glyphicon-pencil"></span> 修改
-									</button>
-									<button class="btn btn-danger btn-xs" title="删除">
-										<span class="glyphicon glyphicon-trash"></span> 删除
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" class="checkItem"></td>
-								<td>3</td>
-								<td>080606112</td>
-								<td>八戒</td>
-								<td>男</td>
-								<td>1995-06-01</td>
-								<td>19计本</td>
-								<td>123@qq.com</td>
-								<td>Good</td>
-								<td>
-									<button class="btn btn-default btn-xs" title="修改">
-										<span class="glyphicon glyphicon-pencil"></span> 修改
-									</button>
-									<button class="btn btn-danger btn-xs" title="删除">
-										<span class="glyphicon glyphicon-trash"></span> 删除
-									</button>
-								</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox" class="checkItem"></td>
-								<td>4</td>
-								<td>080606113</td>
-								<td>沙僧</td>
-								<td>男</td>
-								<td>1995-06-01</td>
-								<td>19计本</td>
-								<td>123@qq.com</td>
-								<td>Good</td>
+								<td th:text="${stu.id}">1</td>
+								<td th:text="${stu.stuid}">080606110</td>
+								<td th:text="${stu.stuname}">唐僧</td>
+								<td th:text="${stu.sex}">男</td>
+								<td th:text="${stu.birthday}">1995-06-01</td>
+								<td th:text="${stu.email}">123@qq.com</td>
+								<td th:text="${stu.note}">Good</td>
 								<td>
 									<button class="btn btn-default btn-xs" title="修改">
 										<span class="glyphicon glyphicon-pencil"></span> 修改
