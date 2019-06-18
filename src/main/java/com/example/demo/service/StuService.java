@@ -14,4 +14,7 @@ public class StuService {
     public List<Stu> list(){
         return stuMapper.list();
     }
+    public int add(Stu stu){
+        return stuMapper.add(stu);
+    }
 }

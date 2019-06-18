@@ -24,47 +24,47 @@
 					</h4>
 					<hr/>
 
-					<form class="form-horizontal" action="#">
+					<form class="form-horizontal" th:action="@{add_student}">
 						<div class="form-group">
 							<label class="control-label col-md-2">学号：</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control" required>
+								<input name="stuid" type="text" class="form-control" required>
 							</div>
 
 							<label class="control-label col-md-2">姓名：</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control" required>
+								<input name="stuname" type="text" class="form-control" required>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-2">性别：</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control" required>
+								<input name="sex" type="text" class="form-control" required>
 							</div>
 
 							<label class="control-label col-md-2">出生日期：</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control datepicker" required>
+								<input name="birthday" type="text" class="form-control datepicker" required>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-2">班级名称：</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control" required>
+								<input name="cname" type="text" class="form-control" required>
 							</div>
 
 							<label class="control-label col-md-2">Email：</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control" required>
+								<input name="email" type="text" class="form-control" required>
 							</div>
 						</div>
 
 						<div class="form-group">
 							<label class="control-label col-md-2">学生备注：</label>
 							<div class="col-md-8">
-								<textarea class="form-control" rows="5"></textarea>
+								<textarea name="note" class="form-control" rows="5"></textarea>
 							</div>
 						</div>
 
@@ -108,29 +108,29 @@
 	});
 
 	/* 表单验证 */
-	var validator = $("form").validate({
-		ignore: [],
-		rules: {},
-		errorPlacement: function (error, element) {
-			var target = $(element);
-			if ($(element).attr("id") === "content") {
-				target = $(element).closest(".col-md-12");
-			}
-			if (!target.next("div").hasClass("tooltip")) {
-				target.attr("title", $(error).text()).tooltip({trigger: "manual"}).tooltip("show");
-			}
-		},
-		unhighlight: function (element, errorClass, validClass) {
-			var target = $(element);
-			if ($(element).attr("id") === "content") {
-				target = $(element).closest(".col-md-12");
-			}
-			target.tooltip('destroy').removeClass(errorClass);
-		},
-		submitHandler: function (form) {
-			alert($(form).serialize());
-		}
-	});
+	// var validator = $("form").validate({
+	// 	ignore: [],
+	// 	rules: {},
+	// 	errorPlacement: function (error, element) {
+	// 		var target = $(element);
+	// 		if ($(element).attr("id") === "content") {
+	// 			target = $(element).closest(".col-md-12");
+	// 		}
+	// 		if (!target.next("div").hasClass("tooltip")) {
+	// 			target.attr("title", $(error).text()).tooltip({trigger: "manual"}).tooltip("show");
+	// 		}
+	// 	},
+	// 	unhighlight: function (element, errorClass, validClass) {
+	// 		var target = $(element);
+	// 		if ($(element).attr("id") === "content") {
+	// 			target = $(element).closest(".col-md-12");
+	// 		}
+	// 		target.tooltip('destroy').removeClass(errorClass);
+	// 	},
+	// 	submitHandler: function (form) {
+	// 		alert($(form).serialize());
+	// 	}
+	// });
 </script>
 
 </body>

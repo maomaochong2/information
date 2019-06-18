@@ -28,9 +28,15 @@ public class StudentController {
         return "list_student";
     }
     //添加页面
-    @RequestMapping("/add_student")
+    @RequestMapping("/toadd_student")
     public String add_classes(){
 
         return "add_student";
+    }
+    //添加功能
+    @RequestMapping("/add_student")
+    public String add(Stu stu){
+        stuService.add(stu);
+        return "redirect:list_student";
     }
 }
