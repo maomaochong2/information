@@ -39,4 +39,10 @@ public class StudentController {
         stuService.add(stu);
         return "redirect:list_student";
     }
+    //删除功能
+    @RequestMapping("/deleteById")
+    public String delete(Integer id){
+        stuService.delete(id);
+        return "redirect:list_student";
+    }
 }

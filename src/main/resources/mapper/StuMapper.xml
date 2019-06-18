@@ -21,6 +21,9 @@
     <insert id="add">
     insert into student values(null,#{stuid},#{stuname},#{sex},#{birthday},#{cname},#{email},#{note})
 </insert>
+    <delete id="delete">
+    delete from student where id=#{id}
+</delete>
     <!--<select id="userLogin" parameterType="user" resultType="User">-->
         <!--SELECT *-->
         <!--FROM user WHERE username = #{username} AND password = #{password}-->

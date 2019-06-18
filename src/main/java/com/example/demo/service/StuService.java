@@ -17,4 +17,7 @@ public class StuService {
     public int add(Stu stu){
         return stuMapper.add(stu);
     }
+    public int delete(Integer id){
+        return stuMapper.delete(id);
+    }
 }
