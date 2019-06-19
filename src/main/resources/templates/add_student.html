@@ -29,6 +29,7 @@
 							<label class="control-label col-md-2">学号：</label>
 							<div class="col-md-3">
 								<input name="stuid" type="text" class="form-control" required>
+								<div style="color: red" th:text="${errormsg}"></div>
 							</div>
 
 							<label class="control-label col-md-2">姓名：</label>
@@ -40,8 +41,14 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">性别：</label>
 							<div class="col-md-3">
-								<input name="sex" type="text" class="form-control" required>
+								<!--<input name="sex" type="text" class="form-control" required>-->
+								<select class="form-control"  name="sex">
+									<option >—————请选择——————</option>
+									<option  th:selected="*{sex=='男'}">男</option>
+									<option  th:selected="*{sex=='女'}">女</option>
+								</select>
 							</div>
+
 
 							<label class="control-label col-md-2">出生日期：</label>
 							<div class="col-md-3">
@@ -52,6 +59,10 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">班级名称：</label>
 							<div class="col-md-3">
+								<!--<select class="form-control"  name="cname" th:value="*{cname}">-->
+									<!--&lt;!&ndash;<option value="男" th:selected="*{sex=='男'}">男</option>&ndash;&gt;-->
+									<!--&lt;!&ndash;<option value="女" th:selected="*{sex=='女'}">女</option>&ndash;&gt;-->
+								<!--</select>-->
 								<input name="cname" type="text" class="form-control" required>
 							</div>
 

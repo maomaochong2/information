@@ -27,6 +27,9 @@
     <select id="findById" resultMap="stuMap">
         select * from student where  id=#{id}
     </select>
+    <select id="findByStuId" resultMap="stuMap">
+        select * from student where  stuid=#{stuid}
+    </select>
     <!--<select id="userLogin" parameterType="user" resultType="User">-->
         <!--SELECT *-->
         <!--FROM user WHERE username = #{username} AND password = #{password}-->

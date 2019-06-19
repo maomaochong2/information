@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.ClassInfo;
 import com.example.demo.entity.Stu;
 import com.example.demo.mapper.StuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,4 +27,10 @@ public class StuService {
     public Stu findById(Integer id){
         return stuMapper.findById(id);
     }
+    public List<Stu> findByStuId(Integer stuid){
+        return stuMapper.findByStuId(stuid);
+    }
+//    public List<ClassInfo> findByCname(String cname) {
+//        return classesMapper.findByCname(cname);
+//    }
 }

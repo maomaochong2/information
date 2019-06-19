@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.xml.bind.SchemaOutputResolver;
 import java.util.List;
 
 @Controller
@@ -35,9 +36,16 @@ public class StudentController {
     }
     //添加功能
     @RequestMapping("/add_student")
-    public String add(Stu stu){
-        stuService.add(stu);
-        return "redirect:list_student";
+    public String add(Stu stu,Model model){
+        List<Stu> list=stuService.findByStuId(stu.getStuid());
+       if (list.size()>0 ){
+           model.addAttribute("errormsg","学号已经存在！");
+           return "add_student";
+       }
+       else {
+           stuService.add(stu);
+           return "redirect:list_student";
+       }
     }
     //删除功能
     @RequestMapping("/deleteById")

@@ -45,12 +45,15 @@ public class ClassesController {
      */
     @PostMapping("/add")
 
-    public ModelAndView add(ClassInfo classInfo, Model model, HttpServletRequest request, HttpServletResponse response) {
-        Map<String, String> map = new HashMap<>();
-        map.put("cname", classInfo.getCname());
-        List<ClassInfo> classInfoList = classesService.list();
+    public ModelAndView add(ClassInfo classInfo, Model model) {
+        List<ClassInfo> list = classesService.findByCname(classInfo.getCname());
+        if (list.size()>0){
+            model.addAttribute("errormsg","班级名称重复！");
+            return new ModelAndView("add_classes");
+        }else {
             classesService.add(classInfo);
             return new ModelAndView("redirect:list_classes");
+        }
     }
     /**
      * 添加页面
