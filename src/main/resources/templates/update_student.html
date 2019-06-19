@@ -41,12 +41,11 @@
 						<div class="form-group">
 							<label class="control-label col-md-2">性别：</label>
 							<div class="col-md-3">
-								<select class="form-control" th:value="*{sex}" name="sex">
-
-									<option th:value="*{sex}" name="男">男</option>
-									<option th:value="*{sex}" name="女">女</option>
+								<select class="form-control"  name="sex" th:value="*{sex}">
+									<option value="男" th:selected="*{sex=='男'}">男</option>
+									<option value="女" th:selected="*{sex=='女'}">女</option>
 								</select>
-								<!--<input th:value="*{sex}" name="sex" type="text" class="form-control" required>-->
+
 							</div>
 
 							<label class="control-label col-md-2">出生日期：</label>
