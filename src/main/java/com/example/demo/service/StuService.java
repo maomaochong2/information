@@ -20,4 +20,10 @@ public class StuService {
     public int delete(Integer id){
         return stuMapper.delete(id);
     }
+    public int update(Stu stu){
+        return stuMapper.update(stu);
+    }
+    public Stu findById(Integer id){
+        return stuMapper.findById(id);
+    }
 }

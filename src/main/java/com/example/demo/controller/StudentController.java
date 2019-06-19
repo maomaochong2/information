@@ -45,4 +45,17 @@ public class StudentController {
         stuService.delete(id);
         return "redirect:list_student";
     }
+    //修改页面
+    @RequestMapping("/toupdate_student")
+    public String toupdate_student(Integer id, Model model){
+       Stu stu= stuService.findById(id);
+        model.addAttribute(stu);
+        return "update_student";
+    }
+    //修改功能
+    @RequestMapping("/update_student")
+    public String update_student(Stu stu){
+        stuService.update(stu);
+        return "redirect:list_student";
+    }
 }

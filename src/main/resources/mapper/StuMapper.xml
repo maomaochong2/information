@@ -24,11 +24,18 @@
     <delete id="delete">
     delete from student where id=#{id}
 </delete>
+    <select id="findById" resultMap="stuMap">
+        select * from student where  id=#{id}
+    </select>
     <!--<select id="userLogin" parameterType="user" resultType="User">-->
         <!--SELECT *-->
         <!--FROM user WHERE username = #{username} AND password = #{password}-->
     <!--</select>-->
-    <!--<update id="updatepwd">-->
-    <!--update user set password=#{password} where username=#{username}-->
-<!--</update>-->
+    <update id="update">
+    update student set stuid=#{stuid},stuname=#{stuname},
+                        sex=#{sex},birthday=#{birthday},
+                        cname=#{cname},email=#{email},
+                        note=#{note}
+     where id=#{id}
+</update>
 </mapper>

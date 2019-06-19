@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh_CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>学员管理系统</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<header th:include="include/header :: header"></header>
+
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="content">
+
+					<h4>
+						<strong>修改学生</strong>
+					</h4>
+					<hr/>
+
+					<form class="form-horizontal" th:action="@{update_student}" th:object="${stu}" method="post">
+						<input th:value="*{id}"  name="id" type="hidden" required>
+						<div class="form-group">
+							<label class="control-label col-md-2">学号：</label>
+							<div class="col-md-3">
+								<input th:value="*{stuid}"  name="stuid" type="text" class="form-control" required>
+							</div>
+
+							<label class="control-label col-md-2">姓名：</label>
+							<div class="col-md-3">
+								<input th:value="*{stuname}" name="stuname" type="text" class="form-control" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-2">性别：</label>
+							<div class="col-md-3">
+								<select class="form-control" th:value="*{sex}" name="sex">
+
+									<option th:value="*{sex}" name="男">男</option>
+									<option th:value="*{sex}" name="女">女</option>
+								</select>
+								<!--<input th:value="*{sex}" name="sex" type="text" class="form-control" required>-->
+							</div>
+
+							<label class="control-label col-md-2">出生日期：</label>
+							<div class="col-md-3">
+								<input th:value="*{birthday}" name="birthday" type="text" class="form-control datepicker" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-2">班级名称：</label>
+							<div class="col-md-3">
+								<input th:value="*{cname}" name="cname" type="text" class="form-control" required>
+							</div>
+
+							<label class="control-label col-md-2">Email：</label>
+							<div class="col-md-3">
+								<input th:value="*{email}" name="email" type="text" class="form-control" required>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label class="control-label col-md-2">学生备注：</label>
+							<div class="col-md-8">
+								<input th:value="*{note}" name="note" class="form-control" rows="5"></input>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="col-md-10 col-md-offset-2">
+								<button type="submit" class="btn btn-primary">确定</button>
+								<a th:href="@{update_student}"  class="btn btn-default">取消</a>
+							</div>
+						</div>
+					</form>
+
+				</div><!--/.content-->
+			</div><!--/.col-md-12-->
+		</div><!--/.row-->
+	</div><!--/.container-->
+</article>
+
+<footer>
+	<p class="copyright">
+		&copy;2019 <a href="#">SMS</a> 学生信息管理系统
+	</p>
+</footer>
+
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="plugins/layer/layer.js"></script>
+<script src="plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+<script src="plugins/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="js/base.js"></script>
+<script>
+	// 日期控件
+	$(".datepicker").datepicker({
+		format: "yyyy-mm-dd",
+		language: "zh-CN",
+		todayBtn: "linked",
+		todayHighlight: true,
+		autoclose: true
+	}).on("changeDate", function () {
+		validator.element(this);
+	});
+
+</script>
+
+</body>
+</html>
