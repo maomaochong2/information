@@ -84,7 +84,8 @@ public class ClassesController {
     @GetMapping("/findByCname/{cname}")
     @ResponseBody
     public Object findByCname(@PathVariable String cname){
-
+        //System.out.println(classesService.findByCname(String.valueOf(cname)));
         return classesService.findByCname(String.valueOf(cname));//.findByCname(String.valueOf(cname)); //.findById(Integer.valueOf(id));
+
     }
 }

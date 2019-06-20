@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.mapper.MesssageMapper">
+    <resultMap type="com.example.demo.entity.Message" id="messageMap">
+        <id column="id" property="id"/>
+        <result column="command" property="command"/>
+        <result column="description" property="description"/>
+        <result column="content" property="content"/>
+    </resultMap>
+<!--    <insert id="add">-->
+<!--    insert into classes values(null,#{cname},#{cdesc})-->
+<!--</insert>-->
+<!--    <delete id="delete">-->
+<!--    delete from classes where id=#{id}-->
+<!--</delete>-->
+<!--    <update id="update">-->
+<!--    update classes set cname=#{cname},cdesc=#{cdesc} where id=#{id}-->
+<!--</update>-->
+    <select id="list" resultMap="messageMap">
+    select * from message;
+</select>
+<!--        <select id="findById" resultMap="classesMap">-->
+<!--    select * from classes where  id=#{id}-->
+<!--</select>-->
+<!--&lt;!&ndash;    select * from classes where  cname=#{cname}&ndash;&gt;-->
+<!--<select id="findByCname" parameterType="String" resultMap="classesMap">-->
+<!--      select * from classes where  cname LIKE '%${cname}%'-->
+<!--</select>-->
+</mapper>
