@@ -13,4 +13,5 @@ public interface UserMapper {
     User userLogin(@Param("username") String username,@Param("password") String password);
     int updatepwd(User user);
     User findById(Integer id);
+    int add(User user);
 }

@@ -23,8 +23,10 @@ public class UserLoginService {
         return userMapper.updatepwd(user);
     }
     public User findById(Integer id){
-
-
         return userMapper.findById(id);
+    }
+    //添加用户
+    public int add(User user){
+        return userMapper.add(user);
     }
 }

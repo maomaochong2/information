@@ -4,6 +4,7 @@ import com.example.demo.entity.ClassInfo;
 import com.example.demo.entity.User;
 import com.example.demo.service.ClassesService;
 import com.example.demo.service.UserLoginService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,9 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+@Api(value = "/")
 @Controller
 @RequestMapping("/")
-
-
 public class LoginController {
     @Autowired
     private UserLoginService userLoginService;
@@ -32,8 +32,6 @@ public class LoginController {
     }
     @RequestMapping("/index")
     public String index1(){
-//        List<ClassInfo> list=classesService.list();
-//        model.addAttribute("list",list);
         return "index";
     }
     //修改密码页面
@@ -47,13 +45,10 @@ public class LoginController {
     @PostMapping("/updatepwd")
     public String update(User user,HttpServletRequest request,Model model){
         String password = request.getParameter("password");
-//        String password2 = request.getParameter("password2");
-//        System.out.println("password:"+password+"password2:"+password2);
         if(password != null){
             model.addAttribute("msg","密码错误!请重新输入");
             userLoginService.updatepwd(user);
             return "redirect:login";
-
         }else{
             return "password";
         }
@@ -82,7 +77,6 @@ public class LoginController {
         user =this.userLoginService.userLogin(user);
         if (user != null) {
             session=request.getSession();
-
             session.setAttribute("username", username);
             session.setAttribute("password",password);
             mav.setViewName("index");
@@ -91,7 +85,6 @@ public class LoginController {
             model.addAttribute("errormsg","账号或密码错误！");
             mav.setViewName("login");
         }
-       // mav.setViewName("login");
         return mav;
     }
     @RequestMapping(value = {"/loginout"})
@@ -101,4 +94,5 @@ public class LoginController {
         }
         return "login";
     }
+
 }

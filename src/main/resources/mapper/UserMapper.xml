@@ -15,6 +15,9 @@
         SELECT *
         FROM user WHERE username = #{username} AND password = #{password}
     </select>
+    <insert id="add">
+         insert into user values(null,#{username},#{password})
+    </insert>
     <update id="updatepwd">
     update user set password=#{password} where username=#{username}
 </update>
