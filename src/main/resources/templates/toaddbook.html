@@ -20,10 +20,11 @@
         $.ajax({
             url:'/addbook',
             type:"post",
-            dataType:JSON,
+            dataType:"text",
             data:{"bookname":bookname,"author":author,"price":price},
             success:function(data){
                  window.alert("添加成功");
+                 window.location.href='/book'
             }
             // ,
             // error:function () {

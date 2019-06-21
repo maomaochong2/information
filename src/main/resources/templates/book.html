@@ -23,40 +23,61 @@
 </html>
 <script src="js/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript">
-    function refurbishIndex() {
-        var res = $.ajax({
-            url:"/findlist",
-            type:"get",
-            dataType:"json",
-            success:function (data) {
-                var html = '';
-                for (var i = 0; i < data.length; i++) {
-                    var d = data[i];
-                    html += "<tr >" +
-                        "<td >"+data[i]['id']+"</td>\n" +
-                        "<td >"+data[i]['bookname']+"</td>\n" +
-                        "<td >"+d['author']+"</td>\n" +
-                        "<td >"+data[i].price+"</td>\n" +
-                        "<td>\n" +
-                        "<td>"+"<input type='button' id='delBtn' value='修改' onclick='del("+data[i].id+")'/>"+"<input type='button' id='delBtn' value='删除' onclick='del("+data[i].id+")'/>"+"</td>"+
-                        "</tr>\n";
+
+    $(function () {
+        // refurbishIndex()
+            var res = $.ajax({
+                url:"/findlist",
+                type:"get",
+                dataType:"json",
+                success:function (data) {
+                    render.list(data);
                 }
-                $("#tbodydata").html(html);
-            }
-        });
-    }
+            });
+    });
+    // function refurbishIndex() {
+    //     var res = $.ajax({
+    //         url:"/findlist",
+    //         type:"get",
+    //         dataType:"json",
+    //         success:function (data) {
+    //             render.list(data);
+    //         }
+    //     });
+    // }
+
     //删除
     function del(id){
         $.ajax({
             type:"get",
             url:"/deletebook/"+id,
-            dataType:JSON,
+            dataType:"json",
             success:function(data){
                 alert("删除成功");
+                render.list(data);
             },
             error:function (data) {
                 alert("删除失败");
             }
         });
     };
+
+    var render = {
+        list:function (data) {
+            var html = '';
+            for (var i = 0; i < data.length; i++) {
+                var d = data[i];
+                html += "<tr >" +
+                    "<td >"+data[i]['id']+"</td>\n" +
+                    "<td >"+data[i]['bookname']+"</td>\n" +
+                    "<td >"+d['author']+"</td>\n" +
+                    "<td >"+data[i].price+"</td>\n" +
+                    "<td>\n" +
+                    "<td>"+"<input type='button' id='delBtn' value='修改' onclick='del("+data[i].id+")'/>"
+                    +"<input type='button' id='delBtn' value='删除' onclick='del("+data[i].id+")'/>"+"</td>"+
+                    "</tr>\n";
+            }
+            $("#tbodydata").html(html);
+        }
+    }
 </script>

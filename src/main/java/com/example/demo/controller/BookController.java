@@ -46,9 +46,9 @@ public class BookController {
     //删除图书
     @GetMapping("/deletebook/{id}")
     @ResponseBody
-    public String delete( Integer id){
+    public Object delete( @PathVariable("id") Integer id){
         bookService.delete(id);
-        return "redirect:/book";
+        return bookService.findlist();
     }
     @PutMapping("/toupdatebook")
     @ResponseBody
