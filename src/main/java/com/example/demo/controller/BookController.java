@@ -2,15 +2,18 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Book;
 import com.example.demo.service.BookService;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
 public class BookController {
+    @Autowired
     private BookService bookService;
 
     //
@@ -24,7 +27,26 @@ public class BookController {
     @ResponseBody
     public List<Book> findlist(){
         List<Book> list=bookService.findlist();
-        System.out.println(list);
         return list;
+    }
+    //添加页面
+    @GetMapping("/toaddbook")
+    public String toadd(){
+        return "toaddbook";
+    }
+    @PostMapping("/addbook")
+    @ResponseBody
+    public String add(@Valid Book book){
+//        String name=book.getBookname();
+//        List<Book> list=bookService.findlist();
+        int add=bookService.add(book);
+        return "redirect:/book";
+    }
+    //删除图书
+    @GetMapping("/deletebook/{id}")
+    @ResponseBody
+    public String delete( Integer id){
+        bookService.delete(id);
+        return "redirect:/book";
     }
 }

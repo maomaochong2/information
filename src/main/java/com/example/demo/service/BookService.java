@@ -15,5 +15,11 @@ public class BookService {
     public List<Book> findlist(){
         return bookMapper.findlist();
     }
+    public int add(Book book){
+        return bookMapper.add(book);
+    }
+    public int delete(Integer id){
+        return bookMapper.delete(id);
+    }
 
 }

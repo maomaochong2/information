@@ -9,12 +9,12 @@
         <result column="author" property="author"/>
         <result column="price" property="price"/>
     </resultMap>
-<!--    <insert id="add">-->
-<!--    insert into classes values(null,#{cname},#{cdesc})-->
-<!--</insert>-->
-<!--    <delete id="delete">-->
-<!--    delete from classes where id=#{id}-->
-<!--</delete>-->
+    <insert id="add">
+    insert into book values(null,#{bookname},#{author},#{price})
+</insert>
+    <delete id="delete">
+    delete from book where id=#{id}
+</delete>
 <!--    <update id="update">-->
 <!--    update classes set cname=#{cname},cdesc=#{cdesc} where id=#{id}-->
 <!--</update>-->

@@ -6,6 +6,9 @@
 </head>
 <body>
 <input type="button" onclick="refurbishIndex()" value="点击查看所有"/>
+<div>
+    <a href="/toaddbook">添加</a>
+</div>
 <table id="list">
     <tr>
         <th>图书ID</th>
@@ -36,8 +39,8 @@
                         "<td >"+d['author']+"</td>\n" +
                         "<td >"+data[i].price+"</td>\n" +
                         "<td>\n" +
-                        "<a href=\"/update_classes?id="+data[i]['id']+"\">修改</a>&nbsp;&nbsp;\n" +
-                        "<a href=\"/delete?id="+data[i]['id']+"\" onclick=\"javascript:return del();\">删除</a>\n" +
+                        "<input type='button' id='updBtn' value='修改' onclick= 'jump("+data.noticeid+")'/>" +"&nbsp&nbsp&nbsp&nbsp"+
+                    "<a href=\"/deletebook?id="+data[i]['id']+"\" onclick=\"del();\">删除</a>\n" +
                         "</td>\n" +
                         "</tr>\n";
                 }
@@ -45,4 +48,18 @@
             }
         });
     }
+    //删除
+    function del(){
+        $.ajax({
+            type:"get",
+            url:"/deletebook/"+id,
+            dataType:JSON,
+            success:function(data){
+                alert("删除成功");
+            },
+            error:function (data) {
+                alert("删除失败");
+            }
+        });
+    };
 </script>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+图书名称：<input name="bookname"/><br>
+作者：<input name="author"/><br>
+价格：<input name="price"/><br>
+<input onclick="add()" type="button" value="确定" />
+</body>
+</html>
+<script src="js/jquery-1.12.4.min.js" ></script>
+<script>
+    function add () {
+        var bookname=$("input[name='bookname']").val();
+        var author=$("input[name='author']").val();
+        var price=$("input[name='price']").val();
+        $.ajax({
+            url:'/addbook',
+            type:"post",
+            dataType:JSON,
+            data:{"bookname":bookname,"author":author,"price":price},
+            success:function(data){
+                 window.alert("添加成功");
+            }
+            // ,
+            // error:function () {
+            //     // window.alert("添加失败");
+            // }
+        });
+    };
+
+</script>
