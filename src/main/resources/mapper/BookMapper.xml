@@ -15,15 +15,15 @@
     <delete id="delete">
     delete from book where id=#{id}
 </delete>
-<!--    <update id="update">-->
-<!--    update classes set cname=#{cname},cdesc=#{cdesc} where id=#{id}-->
-<!--</update>-->
+    <update id="update">
+    update book set bookname=#{bookname},author=#{author},price=#{price} where id=#{id}
+</update>
     <select id="findlist" resultMap="bookMap">
     select * from book
 </select>
-<!--    <select id="findById" resultMap="classesMap">-->
-<!--    select * from classes where  id=#{id}-->
-<!--</select>-->
+    <select id="findById" resultMap="bookMap">
+    select * from book where  id=#{id}
+</select>
 <!--    <select id="findByCname" parameterType="String" resultMap="classesMap">-->
 <!--      select * from classes where  cname LIKE '%${cname}%'-->
 <!--</select>-->

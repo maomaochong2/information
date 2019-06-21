@@ -5,6 +5,7 @@ import com.example.demo.service.BookService;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,5 +49,12 @@ public class BookController {
     public String delete( Integer id){
         bookService.delete(id);
         return "redirect:/book";
+    }
+    @PutMapping("/toupdatebook")
+    @ResponseBody
+    public String toupdatebook(Model model,Integer id){
+        Book book = bookService.findById(id);
+        model.addAttribute("book","book");
+        return "toupdatebook";
     }
 }

@@ -39,9 +39,7 @@
                         "<td >"+d['author']+"</td>\n" +
                         "<td >"+data[i].price+"</td>\n" +
                         "<td>\n" +
-                        "<input type='button' id='updBtn' value='修改' onclick= 'jump("+data.noticeid+")'/>" +"&nbsp&nbsp&nbsp&nbsp"+
-                    "<a href=\"/deletebook?id="+data[i]['id']+"\" onclick=\"del();\">删除</a>\n" +
-                        "</td>\n" +
+                        "<td>"+"<input type='button' id='delBtn' value='修改' onclick='del("+data[i].id+")'/>"+"<input type='button' id='delBtn' value='删除' onclick='del("+data[i].id+")'/>"+"</td>"+
                         "</tr>\n";
                 }
                 $("#tbodydata").html(html);
@@ -49,7 +47,7 @@
         });
     }
     //删除
-    function del(){
+    function del(id){
         $.ajax({
             type:"get",
             url:"/deletebook/"+id,

@@ -21,5 +21,11 @@ public class BookService {
     public int delete(Integer id){
         return bookMapper.delete(id);
     }
+    public int update(Book book){
+        return bookMapper.update(book);
+    }
+    public Book findById(Integer id){
+        return bookMapper.findById(id);
+    }
 
 }

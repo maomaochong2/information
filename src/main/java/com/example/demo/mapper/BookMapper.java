@@ -10,4 +10,6 @@ public interface BookMapper {
     List<Book> findlist();
     int add(Book book);
     int delete(Integer id);
+    int update(Book book);
+    Book findById(Integer id);
 }
