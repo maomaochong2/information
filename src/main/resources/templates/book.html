@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" onclick="refurbishIndex()" value="点击查看所有"/>
+<table id="list">
+    <tr>
+        <th>图书ID</th>
+        <th>图书名称</th>
+        <th>作者</th>
+        <th>价格</th>
+        <th>操作&nbsp;&nbsp;删除</th>
+    </tr>
+
+    <tbody id="tbodydata"></tbody>
+</table>
+</body>
+</html>
+<script src="js/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript">
+    function refurbishIndex() {
+        var res = $.ajax({
+            url:"/findlist",
+            type:"get",
+            dataType:"json",
+            success:function (data) {
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    var d = data[i];
+                    html += "<tr >" +
+                        "<td >"+data[i]['id']+"</td>\n" +
+                        "<td >"+data[i]['bookname']+"</td>\n" +
+                        "<td >"+d['author']+"</td>\n" +
+                        "<td >"+data[i].price+"</td>\n" +
+                        "<td>\n" +
+                        "<a href=\"/update_classes?id="+data[i]['id']+"\">修改</a>&nbsp;&nbsp;\n" +
+                        "<a href=\"/delete?id="+data[i]['id']+"\" onclick=\"javascript:return del();\">删除</a>\n" +
+                        "</td>\n" +
+                        "</tr>\n";
+                }
+                $("#tbodydata").html(html);
+            }
+        });
+    }
+</script>
