@@ -5,26 +5,60 @@
     <title>Title</title>
 </head>
 <body>
-图书名称：<input name="bookname"/><br>
-作者：<input name="author"/><br>
-价格：<input name="price"/><br>
-<input onclick="add()" type="button" value="确定" />
+<input value="id"  name="id" type="hidden" required>
+图书名称：<input value=""  name="bookname"/><br>
+作者：<input value=""  name="author"/><br>
+价格：<input value=""  name="price"/><br>
+<input onclick="upd()" type="button" value="确定" />
 </body>
 </html>
 <script src="js/jquery-1.12.4.min.js" ></script>
 <script>
-    //修改
-    function upd(noticeid) {
-        var notitle=$("input[name='notitle']").val();
-        var text=$("input[name='text']").val();
+    function GetQueryString(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r!=null)return  unescape(r[2]); return null;
+    }
+    $(function get() {
+        var id = GetQueryString("id");
+
         $.ajax({
-            url:'/notice/update/'+id,
+            url:'/findById/'+id,
+            type:"get",
+            async:false,
+            dataType:"json",
+            success:function(data){
+                $("input[name='id']").val(data.id);
+                $("input[name='bookname']").val(data.bookname);
+               $("input[name='author']").val(data.author);
+                $("input[name='price']").val(data.price);
+            },
+            error:function (data) {
+                alert("search error");
+            }
+        });
+    });
+    //修改
+    function upd() {
+        var id=$("input[name='id']").val();
+        var bookname=$("input[name='bookname']").val();
+        var author=$("input[name='author']").val();
+        var price=$("input[name='price']").val();
+        $.ajax({
+            url:'/updatebook/',
             type:"put",
             async:false,
-            data:{},
+            data:{id:id,bookname:bookname,author:author,price:price},
+            dataType:"text",
             success:function(data){
-                $("#notitle").val(notitle);
-                $("#text").val(text);
+                console.log(data);
+                if(data != 0){
+                    alert("修改成功");
+                    window.location.href='/book';
+                }else{
+                    alert("修改失败");
+                }
             },
             error:function (data) {
                 alert("修改失败");

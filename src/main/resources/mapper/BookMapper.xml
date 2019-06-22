@@ -9,22 +9,26 @@
         <result column="author" property="author"/>
         <result column="price" property="price"/>
     </resultMap>
+
     <insert id="add">
     insert into book values(null,#{bookname},#{author},#{price})
-</insert>
+  </insert>
+
     <delete id="delete">
     delete from book where id=#{id}
 </delete>
+
     <update id="update">
     update book set bookname=#{bookname},author=#{author},price=#{price} where id=#{id}
 </update>
+
     <select id="findlist" resultMap="bookMap">
     select * from book
 </select>
     <select id="findById" resultMap="bookMap">
     select * from book where  id=#{id}
 </select>
-<!--    <select id="findByCname" parameterType="String" resultMap="classesMap">-->
-<!--      select * from classes where  cname LIKE '%${cname}%'-->
-<!--</select>-->
+    <!--    <select id="findByCname" parameterType="String" resultMap="classesMap">-->
+    <!--      select * from classes where  cname LIKE '%${cname}%'-->
+    <!--</select>-->
 </mapper>

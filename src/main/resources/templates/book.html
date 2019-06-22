@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<input type="button" onclick="refurbishIndex()" value="点击查看所有"/>
+<!--<input type="button" onclick="refurbishIndex()" value="点击查看所有"/>-->
 <div>
     <a href="/toaddbook">添加</a>
 </div>
@@ -23,9 +23,8 @@
 </html>
 <script src="js/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript">
-
+    //点击查看所有
     $(function () {
-        // refurbishIndex()
             var res = $.ajax({
                 url:"/findlist",
                 type:"get",
@@ -35,17 +34,6 @@
                 }
             });
     });
-    // function refurbishIndex() {
-    //     var res = $.ajax({
-    //         url:"/findlist",
-    //         type:"get",
-    //         dataType:"json",
-    //         success:function (data) {
-    //             render.list(data);
-    //         }
-    //     });
-    // }
-
     //删除
     function del(id){
         $.ajax({
@@ -73,7 +61,9 @@
                     "<td >"+d['author']+"</td>\n" +
                     "<td >"+data[i].price+"</td>\n" +
                     "<td>\n" +
-                    "<td>"+"<input type='button' id='delBtn' value='修改' onclick='del("+data[i].id+")'/>"
+                    "<td>"+
+                    // "<input type='button' id='upBtn' value='修改'/>"
+                "<a href=\"/toupdatebook?id="+data[i].id+"\">修改</a>&nbsp;&nbsp;\n"
                     +"<input type='button' id='delBtn' value='删除' onclick='del("+data[i].id+")'/>"+"</td>"+
                     "</tr>\n";
             }

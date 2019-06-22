@@ -33,8 +33,10 @@ public class BookController {
     //添加页面
     @GetMapping("/toaddbook")
     public String toadd(){
+
         return "toaddbook";
     }
+    //添加功能
     @PostMapping("/addbook")
     @ResponseBody
     public String add(@Valid Book book){
@@ -50,11 +52,23 @@ public class BookController {
         bookService.delete(id);
         return bookService.findlist();
     }
-    @PutMapping("/toupdatebook")
-    @ResponseBody
-    public String toupdatebook(Model model,Integer id){
-        Book book = bookService.findById(id);
-        model.addAttribute("book","book");
+    //跳转修改页面
+    @RequestMapping("/toupdatebook")
+    public String toupdatebook(Integer id){
         return "toupdatebook";
+    }
+
+    @GetMapping("/findById/{id}")
+    @ResponseBody
+    public Book findById(@PathVariable("id") Integer id){
+        Book book = bookService.findById(id);
+        return book;
+    }
+
+    //修改功能
+    @PutMapping("/updatebook")
+    @ResponseBody
+    public Integer updatebook(Book book){
+        return  bookService.update(book);
     }
 }
